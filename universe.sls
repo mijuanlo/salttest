@@ -1,6 +1,6 @@
-sleep 2:
-  cmd.run:
-    - name: sleep 3
+#sleep 2:
+#  cmd.run:
+#    - name: sleep 3
 
 refresco_pillar:
   module.run:
