@@ -6,3 +6,9 @@ refresco_pillar:
   module.run:
     - name: saltutil.sync_all
     - refresh: True
+
+highstate:
+  schedule.present:
+    - function: state.highstate
+    - minutes: {{ pillar.get('schedule_time',60) }}
+    - splay: 5
