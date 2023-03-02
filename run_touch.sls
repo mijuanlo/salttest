@@ -1,5 +1,5 @@
 touch /tmp/kaka:
   cmd.run
 
-touch /tmp/{% pillar.get('pkgs'+'_jaja') %}:
+touch /tmp/{% grains['tags'] %}:
   cmd.run
