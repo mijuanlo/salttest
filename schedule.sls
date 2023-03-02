@@ -2,4 +2,5 @@ schedule:
   highstate:
     enabled: True
     function: state.highstate
-    minutes: {{pillar.get('schedule_time')}}
+    minutes: 20
+#{{pillar.get('schedule_time')}}
