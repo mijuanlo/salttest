@@ -3,7 +3,9 @@ touch /tmp/kaka:
 
 {% for gra in grains['tags'] %}
 {% if gra == 'ja'+'ja' %}
-touch /tmp/{{ pillar.get('pkgs_jaja') }}:
+{% for pkg in pillar.get('pkgs_'+gra) %}
+touch /tmp/{{ pkg }}:
   cmd.run
+{% endfor %}
 {% endif %}
 {% endfor %}
