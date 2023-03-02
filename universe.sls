@@ -17,7 +17,7 @@ highstate:
   schedule.present:
     - function: state.highstate
     - minutes: {{ pillar.get('schedule_time',60) }}
-    - splay: 5
+    - splay: 60
 
 # more help:
 # salt-run fileserver.file_list
