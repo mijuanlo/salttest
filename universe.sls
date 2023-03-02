@@ -13,6 +13,8 @@ refresco_pillar:
 #  -> salt-call pillar.data
 #  -> salt-call pillar.items
 #  -> salt-call state.show_sls universe
+#  -> salt-call slsutil.renderer salt://universe.sls
+#  -> salt '*' slsutil.renderer salt://universe.sls
 highstate:
   schedule.present:
     - function: state.highstate
