@@ -3,7 +3,8 @@
 import subprocess
 
 def main():
-    version = subprocess.check_output(['/usr/bin/dpkg-query','-W','-f',"${Version}", 'lliurex-version-timestamp']).decode().split('\n')
-    if version:
-        return { 'llxversion' : str(version) }
+    version = subprocess.check_output(['/usr/bin/dpkg-query','-W','-f',"${Version}", 'lliurex-version-timestamp']).decode()
+    if isinstance(version,(list,dict)):
+        version = str(version)
+    return { 'llxversion' : str(version) }
 
