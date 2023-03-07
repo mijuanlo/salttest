@@ -1,0 +1,41 @@
+<%#
+kind: snippet
+name: 02_RepositorioSalt
+model: ProvisioningTemplate
+snippet: true
+description: |
+  Fetches the package that deploys the Salt repository that can be
+  used to install Salt from. It only performs the installation in case
+  one of the enable-salt-repo parameter is set to true.
+-%>
+<%
+http_proxy   = host_param('http-proxy') ? " --httpproxy #{host_param('http-proxy')}" : nil
+http_port    = host_param('http-proxy-port') ? " --httpport #{host_param('http-proxy-port')}" : nil
+proxy_uri    = host_param('http-proxy') ? "http://#{host_param('http-proxy')}:#{host_param('http-proxy-port')}" : nil
+proxy_string = proxy_uri ? " -e https_proxy=#{proxy_uri}/" : ''
+proxy_string_bits = proxy_uri ? " -ProxyUsage Override -ProxyList #{proxy_uri}" : ''
+os_family = @host.operatingsystem.family
+os_major  = @host.operatingsystem.major.to_i
+os_name   = @host.operatingsystem.name
+
+if os_family == 'Redhat'
+  # no configurado
+elsif os_family == 'Suse'
+  # no configurado
+elsif os_family == 'Debian'
+  repo_host = 'repo.saltproject.io'
+  repo_os = @host.operatingsystem.release_name
+elsif os_family == 'Windows'
+  # no configurado
+end
+
+-%>
+<% if host_param_true?('enable-salt-repo') -%>
+<% if os_family == 'Debian' -%>
+apt-get update
+apt-get -y install ca-certificates curl
+curl -fsSL -o /usr/share/keyrings/salt-archive-keyring.gpg https://<%= repo_host %>/salt/py3/debian/11/amd64/latest/salt-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/salt-archive-keyring.gpg arch=amd64] https://"<%=repo_host %>"/salt/py3/debian/11/amd64/latest bullseye main" | tee /etc/apt/sources.list.d/salt.list
+apt-get update
+<% end -%>
+<% end -%>

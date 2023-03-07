@@ -1,0 +1,17 @@
+#!/usr/bin/ruby
+
+for py in ['python3','python'] do
+  exe=%x(type -p #{py})
+  exe=exe.chomp
+  if not exe.empty?
+    a=%x(#{py} -c 'import salt.config')
+    if $?.exitstatus == 0
+      input=ARGV.join(' ')
+      puts %x(#{exe} #{input})
+      exit $?.exitstatus
+    end
+  end
+end
+
+STDERR.puts "No usable python version found, check if python or python3 can import salt.config!"
+exit 1

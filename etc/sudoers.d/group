@@ -1,0 +1,12 @@
+…
+root:x:0:foreman-proxy
+wheel:x:10:lliurex
+tomcat:x:91:tomcat
+foreman:x:972:
+apache:x:48:
+postgres:x:26:
+foreman-proxy:x:971:root
+pulp:x:970:
+redis:x:969:
+saltuser:x:1001:
+…
