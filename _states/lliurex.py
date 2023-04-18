@@ -23,7 +23,7 @@ def desktop_present(name, user='all'):
                     continue
                 outmsg = subprocess.check_output("cp {} {}".format(filename,dirname),shell=True,stderr=subprocess.STDOUT)
                 if outmsg:
-                out.append(outmsg)
+                    out.append(outmsg)
             if out:
                 out = ','.join(out)
         ret['result'] = True
