@@ -8,6 +8,6 @@ def desktop_present(name, user='all'):
     except Exception as e:
         out = str(e)
         ret['result'] = False
-    ret['comment'] = out
+    ret['comment'] = name
     ret['changes'] = {"result": out}
     return ret
