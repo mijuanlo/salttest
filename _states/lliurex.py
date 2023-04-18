@@ -16,7 +16,7 @@ def desktop_present(name, user='all'):
             out = subprocess.check_output("cp {} {}".format(filename,dirname),shell=True,stderr=subprocess.STDOUT)
         else:
             out = []
-            for us in (for us in pwd.getpwall()):
+            for us in (x.pw_name() for x in pwd.getpwall()):
                 dirname=subprocess.check_output("su {us} - -c 'xdg-user-dir DESKTOP'".format(us),shell=True,stderr=subprocess.STDOUT)
                 dirname=dirname.strip()
                 if not dirname or not os.path.isdir(dirname):
