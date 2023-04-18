@@ -1,3 +1,3 @@
 update_packages:
-  module.run
+  module.run:
     - pkg.refresh_db
