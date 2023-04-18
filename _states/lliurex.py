@@ -9,7 +9,7 @@ def desktop_present(name, user='all'):
         if not os.path.isfile(filename):
             raise Exception('File {} not available'.format(filename))
         if user != 'all':
-            dirname=subprocess.check_output("su {user} - -c 'xdg-user-dir DESKTOP'".format(user),shell=True,stderr=subprocess.STDOUT)
+            dirname=subprocess.check_output("su {} - -c 'xdg-user-dir DESKTOP'".format(user),shell=True,stderr=subprocess.STDOUT)
             dirname=dirname.strip()
             if not dirname or not os.path.isdir(dirname):
                 raise Exception('usererror: user {} with desktop {} not available'.format(user,dirname))
@@ -17,7 +17,7 @@ def desktop_present(name, user='all'):
         else:
             out = []
             for us in (x.pw_name() for x in pwd.getpwall()):
-                dirname=subprocess.check_output("su {us} - -c 'xdg-user-dir DESKTOP'".format(us),shell=True,stderr=subprocess.STDOUT)
+                dirname=subprocess.check_output("su {} - -c 'xdg-user-dir DESKTOP'".format(us),shell=True,stderr=subprocess.STDOUT)
                 dirname=dirname.strip()
                 if not dirname or not os.path.isdir(dirname):
                     continue
