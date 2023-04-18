@@ -20,7 +20,7 @@ def desktop_present(name, user='all'):
             out = subprocess.check_output("cp {} {}".format(filename,dirname),shell=True,stderr=subprocess.STDOUT)
         else:
             out = []
-            for us in (x.pw_name() for x in pwd.getpwall()):
+            for us in (x.pw_name for x in pwd.getpwall()):
                 dirname=subprocess.check_output("su {} - -c 'xdg-user-dir DESKTOP'".format(us),shell=True,stderr=subprocess.STDOUT)
                 try:
                     dirname=dirname.decode()
