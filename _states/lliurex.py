@@ -21,7 +21,7 @@ def desktop_present(name, user='all'):
         else:
             out = []
             for us in (x.pw_name for x in pwd.getpwall()):
-                dirname=subprocess.check_output("su {} - -c 'xdg-user-dir DESKTOP'".format(us),shell=True,stderr=subprocess.STDOUT)
+                dirname=subprocess.check_output("su {} - -c 'xdg-user-dir DESKTOP' -s /bin/sh".format(us),shell=True,stderr=subprocess.STDOUT)
                 try:
                     dirname=dirname.decode()
                 except:
