@@ -2,6 +2,6 @@ base:
   '*':
     - universe
 
-main:
-  '*':
-    - universe
+#main:
+#  '*':
+#    - universe
