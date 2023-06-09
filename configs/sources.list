@@ -1,0 +1,6 @@
+# OFFICIAL REPOSITORIES FROM GVA 
+
+deb http://lliurex.net/focal focal main restricted universe multiverse preschool
+deb http://lliurex.net/focal focal-updates main restricted universe multiverse
+deb http://lliurex.net/focal focal-security main restricted universe multiverse
+

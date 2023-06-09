@@ -1,7 +1,10 @@
 update_all_packages:
-  pkg.uptodate:
-    - name: '*'
+  module.run:
+    - name: pkg.upgrade
+    - dist_upgrade: True
     - refresh: True
+    
+
 #    - require:
 #      - module: update_packages
 #

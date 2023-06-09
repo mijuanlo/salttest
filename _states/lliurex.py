@@ -1,5 +1,6 @@
 import subprocess
 import os.path
+import os
 import pwd
 
 def desktop_present(name, user='all'):
@@ -22,7 +23,7 @@ def desktop_present(name, user='all'):
             created.append(user)
         else:
             out = []
-            for us in (x.pw_name for x in pwd.getpwall()):
+            for us in os.listdir('/home'):
                 dirname=subprocess.check_output("su {} - -c 'xdg-user-dir DESKTOP' -s /bin/sh".format(us),shell=True,stderr=subprocess.STDOUT)
                 try:
                     dirname=dirname.decode()

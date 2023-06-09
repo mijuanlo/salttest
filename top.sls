@@ -1,3 +1,7 @@
 base:
   '*':
     - universe
+
+main:
+  '*':
+    - universe
