@@ -17,11 +17,11 @@ refresco_pillar:
 #  -> salt '*' slsutil.renderer salt://universe.sls
 
 
-#highstate:
-#  schedule.present:
-#    - function: state.highstate
-#    - minutes: {{ pillar.get('schedule_time',60) }}
-#    - splay: 600
+highstate:
+  schedule.present:
+    - function: state.highstate
+    - minutes: {{ pillar.get('schedule_time',60) }}
+    - splay: 600
 
 # more help:
 # salt-run fileserver.file_list
