@@ -24,4 +24,4 @@ def main():
                             for component in components:
                                 if component not in repos[repo][distro]:
                                     repos[repo][distro].append(component)
-    return { 'aptrepos' : repos}
+    return { 'apt-repos' : repos }
