@@ -2,7 +2,6 @@
 
 import glob
 import re
-import yaml
 
 def main():
     filelist = glob.glob('/etc/apt/**/*.list',recursive=True)
@@ -24,5 +23,12 @@ def main():
                             for component in components:
                                 if component not in repos[repo][distro]:
                                     repos[repo][distro].append(component)
-    repos = yaml.dump(repos)
-    return { 'aptrepos' : repos }
+    foreman_print = {}
+    for repo in repos:
+        line = []
+        for distro in repos[repo]:
+            line.append(distro)
+            for component in repos[repo][component]:
+                line.append(component)
+        foreman_print.setdefault(repo,' '.join(line))
+    return { 'aptrepos' : foreman_print }
