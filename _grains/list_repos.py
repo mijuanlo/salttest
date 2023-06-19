@@ -16,6 +16,7 @@ def main():
                         groups = groups[1].split()
                         if len(groups) > 2:
                             repo = groups[0]
+                            repo = repo.replace('/','_')
                             distro = groups[1]
                             components = groups[2:]
                             repos.setdefault(repo,{})
@@ -23,14 +24,4 @@ def main():
                             for component in components:
                                 if component not in repos[repo][distro]:
                                     repos[repo][distro].append(component)
-    # foreman_print = {}
-    # for repo in repos:
-    #     foreman_print.setdefault(repo,[])
-    #     line = []
-    #     for distro in repos[repo]:
-    #         line.append(distro)
-    #         for component in repos[repo][distro]:
-    #             line.append(component)
-    #     foreman_print[repo].extend(line)
     return { 'aptrepos' : repos}
-main()
