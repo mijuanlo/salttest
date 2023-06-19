@@ -28,7 +28,8 @@ def main():
         line = []
         for distro in repos[repo]:
             line.append(distro)
-            for component in repos[repo][component]:
+            for component in repos[repo][distro]:
                 line.append(component)
         foreman_print.setdefault(repo,' '.join(line))
     return { 'aptrepos' : foreman_print }
+main()
