@@ -25,11 +25,12 @@ def main():
                                     repos[repo][distro].append(component)
     foreman_print = {}
     for repo in repos:
+        foreman_print.setdefault(repo,[])
         line = []
         for distro in repos[repo]:
             line.append(distro)
             for component in repos[repo][distro]:
                 line.append(component)
-        foreman_print.setdefault(repo,' '.join(line))
+        foreman_print[repo].extend(line)
     return { 'aptrepos' : foreman_print }
 main()
