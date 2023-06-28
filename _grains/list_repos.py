@@ -9,7 +9,7 @@ def main():
     for file in filelist:
         with open(file,'r') as fp:
             for line in fp.readlines():
-                m = re.match(r'^deb\s+([[][^]]+[]])*(.*)$',line)
+                m = re.match(r'^deb\s+([\[][^\]]+[\]])*(.*)$',line)
                 if m:
                     groups = m.groups()
                     if len(groups) > 1:
